@@ -1,0 +1,46 @@
+* {
+    font-family: "Open Sans";
+}
+
+.avatar_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4444;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
+
+}
+
+.form-create {
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-create h1 {
+    font-weight: 300;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+
+.mainFooter {
+    background-color:#222;
+    width: 100%;
+    min-height: 40px;
+    padding: 20px 20px;
+    color: #fff;
+    text-align: center; 
+    font-size: 14px;
+}
+
+.contentWrapper {
+    margin-bottom: 80px;
+}

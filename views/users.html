@@ -1,0 +1,86 @@
+
+    <div class="contentWrapper">
+    <div class="container-fluid">
+
+        <a href="/users/create" class="btn btn-primary mb-3 mt-3">+ Add Aluno</a>
+
+        <form action="/users" method="GET" class="form-group">
+            <div class="row">
+                
+                <div class="col-md-3 form-group">
+                    <input type="text" class="form-control" name="search" value = "{$search}" placeholder="Digite uma busca">
+                </div>
+
+                <div class="col-md-3">
+                    <button class="btn btn-primary">Buscar</button>
+                </div>
+
+            </div>
+
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Avatar</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Turma</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {loop="$users"}
+                <tr>
+                    <td>
+                        <div class="avatar_img" style="background-image:url(img/user.png);"></div>
+                    </td>
+                    <td scope="row">{$value.iduser}</td>
+                    <td>{$value.name}</td>
+                    <td>{$value.phone}</td>
+                    <td>{$value.email}</td>
+                    <td>{$value.turma}</td>
+                    <td>
+                        <a  href="/users/{$value.iduser}" class="btn btn-outline-success">Vizualizar</a>
+                        <a href="/users/{$value.iduser}/update" class="btn btn-outline-dark">Editar</a>
+                        <a href="/users/{$value.iduser}/delete" onclick="return confirm('Deseja deletar {$value.name}?');" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+                {/loop}
+
+               
+
+
+            </tbody>
+        </table>
+
+        <div class="box">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  {if="$page > 1"}
+                  <li class="page-item"><a class="page-link" href="/users?page={$page-1}">Anterior</a></li>
+                  {/if}
+
+                  {loop="$pages"}
+                  <li class="page-item"><a class="page-link" href="{$value.url}">{$value.item}</a></li>
+                  {/loop}
+
+                  {if="$page < $totalPages"}
+                  <li class="page-item"><a class="page-link" href="/users?page={$page+1}">Proximo</a></li>
+                  {/if}
+                </ul>
+              </nav>
+        </div>
+
+    </div>
+    <!--End of container -->
+
+    </div><!-- End of contetnWrapper -->
+
+
+    <script src="bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
