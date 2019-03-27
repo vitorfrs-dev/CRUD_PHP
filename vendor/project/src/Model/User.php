@@ -41,7 +41,7 @@ class User extends Model {
             ':phone'    => $this->getphone(),
             ':email'    => $this->getemail(),
             ":turma"     => $this->getturma(),
-            ':avatar_url' => '/res/img/01-02/user.png'
+            ':avatar_url' => '/res/01-02/img/user.png'
         ]);
 
     }
