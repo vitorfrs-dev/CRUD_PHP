@@ -35,12 +35,13 @@ class User extends Model {
 
         $sql = new Sql();
 
-        $sql->query('INSERT INTO clientes (name, phone, email, turma) 
-        VALUES (:name, :phone, :email, :turma)', [ 
+        $sql->query('INSERT INTO clientes (name, phone, email, turma, avatar_url) 
+        VALUES (:name, :phone, :email, :turma, :avatar_url)', [ 
             ':name'     => $this->getname(),
             ':phone'    => $this->getphone(),
             ':email'    => $this->getemail(),
-            "turma"     => $this->getturma()
+            ":turma"     => $this->getturma(),
+            ':avatar_url' => '/res/img/01-02/user.png'
         ]);
 
     }
@@ -50,12 +51,13 @@ class User extends Model {
 
         $sql = new Sql();
 
-        $sql->query('UPDATE clientes SET name = :name, phone = :phone, email = :email, turma = :turma WHERE iduser = :iduser', [ 
+        $sql->query('UPDATE clientes SET name = :name, phone = :phone, email = :email, turma = :turma, avatar_url = :avatar_url WHERE iduser = :iduser', [ 
             ':iduser'   => $this->getiduser(),
             ':name'     => $this->getname(),
             ':phone'    => $this->getphone(),
             ':email'    => $this->getemail(),
-            ':turma'    => $this->getturma()
+            ':turma'    => $this->getturma(),
+            ':avatar_url' => $this->getavatar_url()
         ]);
 
     }

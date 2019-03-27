@@ -35,7 +35,7 @@
                 <?php $counter1=-1;  if( isset($users) && ( is_array($users) || $users instanceof Traversable ) && sizeof($users) ) foreach( $users as $key1 => $value1 ){ $counter1++; ?>
                 <tr>
                     <td>
-                        <div class="avatar_img" style="background-image:url(img/user.png);"></div>
+                        <div class="avatar_img" style="background-image:url(<?php echo htmlspecialchars( $value1["avatar_url"], ENT_COMPAT, 'UTF-8', FALSE ); ?>);"></div>
                     </td>
                     <td scope="row"><?php echo htmlspecialchars( $value1["iduser"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>

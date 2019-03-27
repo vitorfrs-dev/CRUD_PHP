@@ -6,6 +6,7 @@ use \Slim\Slim;
 use \Project\DB\Sql;
 use \Project\Page;
 use \Project\Model\User;
+use \Project\FileManagement;
 
 
 $app = new Slim();
@@ -133,6 +134,49 @@ $app->post('/users/:iduser/update' ,function($iduser) {
     $user->update();
 
     header('Location: /users');
+    exit;
+
+});
+
+$app->get('/users/:iduser/update_photo', function($iduser) {
+
+    $page = new Page();
+
+    $user = new User();
+
+    $user->get((int)$iduser);
+
+    $page->setTpl('upload-photo', [
+        'user'  =>  $user->getValues()
+    ]);
+
+});
+
+$app->post('/users/:iduser/update_photo', function($iduser) {
+
+    $user = new User();
+
+    $user->get((int)$iduser);
+
+    $file = (isset($_FILES['user_photo']) ? $_FILES['user_photo'] : null);
+
+    if ($file) {
+
+        $upload = FileManagement::uploadPhoto($file, $user->getiduser(), 'user_profile_');
+
+        if ($upload) {
+
+            $user->setavatar_url($upload['url']);
+
+            $user->update();
+
+        } else {
+            echo 'Erro no upload'; exit;
+        }
+
+    }
+
+    header('Location: /users/'. $user->getiduser(). '/update' );
     exit;
 
 });
